@@ -1,0 +1,436 @@
+@font-face {
+    font-family: 'Caviar';
+    src: url(/font/CaviarDreams_Bold.ttf);
+}
+@font-face {
+    font-family: 'Grownland';
+    src: url(/font/Growland\ Bold.otf);
+}
+.fontNav{
+    font-size: 3vh;
+    font-weight: 400;
+    font-family: caviar;
+}
+*::-webkit-scrollbar{
+    background-color: #121629;
+    width: 10px;
+}
+*::-webkit-scrollbar-track {
+    background: #232946;        /* color of the tracking area */
+  }
+*::-webkit-scrollbar-thumb{
+    background-color: #eb7d8d;
+   
+}
+*{
+    padding: 0;
+    margin: 0;
+   
+}
+
+header{
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background: #232946;
+}
+#logo{
+    position: absolute;
+    height: 25vh;
+    width: 25vh;
+    top: 1%;
+    left: 5%;
+}
+nav{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+   
+}
+#menu{
+    display: flex;
+    align-items: center;
+}
+#menu > li{
+  list-style: none;
+  margin-left: 4%;
+}
+#carritoCompra{
+    height: 6vh;
+    width: 6vh;
+    filter: invert();
+}
+#carritoCompra:hover{
+    filter:sepia();
+    cursor: pointer;
+}
+#menu > li > a {
+    text-decoration: none;
+    color: white;
+}
+#menu > li > a:hover{
+    color: #eebbc3;
+}
+#menu > li > button{
+    background: none;
+    border: none;
+    color: white;
+}
+#menu > li > button:hover{
+    color: #eebbc3;
+    cursor: pointer;
+}
+#seccionPrincipal{
+    width: 100%;
+    height: 85vh;
+    background-image: url(/img/pastelesMainSection/pexels-acharaporn-kamornboonyarush-1028718.jpg);
+    background-position: center;
+    background-size: cover;
+    animation-name: animacionCover;
+    animation-duration: 15s;
+    animation-iteration-count:infinite;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#seccionPrincipal > button > a{
+    text-decoration: none;
+    color: white;
+}
+#seccionPrincipal > h1{
+    font-family: Grownland;
+    color: white;
+    font-size: 10vh;
+    -webkit-text-stroke: 2px rgba(184, 193, 236, 0.603);
+}
+#seccionPrincipal > button{
+    margin-top: 1%;
+    background-color: #eb7d8d;
+    border: 2px solid #b8c1ec;
+    color: white;
+    font-family: caviar;
+    font-size: 4vh;
+    height: 10vh;
+    width: 30%;
+    border-radius: 7vh;
+}
+#seccionPrincipal > button:hover{
+    cursor: pointer;
+}
+#seleccionDeLaSemana{
+    height: 100vh;
+    width: 100%;
+}
+#seleccionDeLaSemana > h2{
+    background-color: #232946;
+    height: 10vh;
+    text-align: center;
+    color: white;
+    line-height: 10vh;
+    font-size: 6vh;
+    font-family: caviar;
+}
+#pastelesFrios{
+    width: 100%;
+    height: 45vh;
+   
+}
+#pastelesNormales{
+    width: 100%;
+    height: 45vh;
+}
+.seccionPasteles{
+    display: flex;
+    flex-direction: column;
+}
+.seccionPasteles > h3{
+    height: 5vh;
+    font-family: caviar;
+    font-size: 4vh;
+    margin-left: 2%;
+}
+.seccionPasteles> ul{
+    height: 35vh;
+}
+.seccionPasteles > h4{
+    height: 5vh;
+    font-family: caviar;
+    font-size: 2vh;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1vh;
+}
+.seccionPasteles > h4 > a{
+    color: #232946;
+    text-decoration: none;
+    margin-right: 2%;
+}
+#listaPastelesFrios, #listaPastelesNormales{
+   width: 90%;
+   display: grid;
+   grid-auto-flow: column;
+   scroll-behavior: auto;
+   gap: 0.5vh;
+   overflow-y: auto;
+   overscroll-behavior-x: contain;
+   scroll-snap-type: x mandatory;
+   scrollbar-width: none;
+   list-style: none;
+   align-self: center;
+}
+
+.seleccionSemana:hover{
+    box-shadow: 0px 0px 15px black;
+   transform: translateY(10px);
+   transition: all 1.5s;
+    
+}
+.seleccionSemana{
+    width: 25vh;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    border-radius: 2vh;
+    font-family: caviar;
+    margin-left: 5vh;
+
+}
+.seleccionSemana>h3{
+    height: 7vh;
+    text-align: center;
+    line-height: 7vh;
+    background: #121629;
+    color: white;
+    border-radius: 2vh 2vh 0vh 0vh;
+    font-size: 2vh;
+}
+.seleccionSemana > img{
+    height: 16vh;
+}
+.seleccionSemana > .infoLista{
+    height: 7vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #232946;
+    border-radius: 0vh 0vh 2vh 2vh;
+}
+.infoLista > p{
+    text-decoration: none;
+    color: white;
+    font-size: 2vh;
+}
+.iconoCompra{
+    filter: invert();
+    width: 3vh;
+    height: 3vh;
+}
+.hide{
+    display: none;
+}
+#contenedorCarritoDeCompras{
+    position: absolute;
+    height: auto;
+    width: 40vh;
+    top: 10.2%;
+    right: 5%;
+    background-color: #7d8ddd;
+    display: flex;
+    flex-direction: column;
+    padding: 1vh;
+    border-radius: 1vh;
+    font-family: caviar;
+}
+
+
+.articuloCarrito{
+    width: 100%;
+    height: 7vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+    background: #eb8e9c;
+    border-radius: 1vh;
+    margin-bottom: 2%;
+    font-family: caviar;
+    color: white;
+}
+.iconoArticulo{
+height: 100%;
+
+}
+#contenedorCarritoDeCompras > p{
+ color: white;
+}
+.iconoArticulo{
+    height: 5vh;
+}
+#continuarCompra{
+    border: none;
+    width: 100%;
+    font-family: caviar;
+    padding: 1vh;
+    border-radius: 1vh;
+    background: black;
+    color: white;
+    font-size: 2vh;
+}
+#continuarCompra:hover{
+    cursor: pointer;
+}
+.botonCarrito{
+    background: none;
+    border: none;
+}
+.botonCarrito:hover{
+    cursor: pointer;
+}
+#locacion{
+    height: 50vh;
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+}
+#mapa{
+    background-color: black;
+}
+.modal{
+    height: 10vh;
+    width: 10vh;
+    background: black;
+}
+#contenedorCompras{
+    position: absolute;
+    z-index: 1;
+    left: 5%;
+    height: 90vh;
+    width: 90%;
+    border-radius: 2vh;
+    box-shadow: 0px 0px 20px #eb8e9c;
+    background-color: #232946;
+    color: white;
+ 
+}
+.contenedorProducto{
+
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#cabeceraConfirmacion{
+    justify-self: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+    height: 10%;
+ 
+}
+#cabeceraConfirmacion > h3{
+    font-size: 4vh;
+    font-family: caviar;
+}
+#contenedorInformacionExtras{
+    height: 80%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+#infoPastel{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: caviar;
+    font-size: 3vh;
+}
+#infoPastel > img{
+    height: 80%;
+    width: 90%;
+    border-radius: 1vh;
+}
+#contenedorBoton{
+    height: 10%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#contenedorBoton > button{
+    background-color: #eb7d8d;
+    color: white;
+    border: 2px solid #121629;
+    border-radius: 2vh;
+    font-family: caviar;
+    font-size: 3vh;
+    height: 6vh;
+    width: 50vh;
+}
+#contenedorBoton > button:hover{
+    cursor: pointer;
+}
+#cerrarVentana{
+    filter: invert();
+    background: none;
+    border: none;
+}
+#cerrarVentana:hover{
+    cursor: pointer;
+}
+#extrasPastel{
+    width: 45%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+#extrasPastel > h3{
+    font-family: caviar;
+    font-size: 4vh;
+}
+@keyframes animacionCover{
+    0%{
+        background-image: url(/img/pastelesMainSection/pexels-acharaporn-kamornboonyarush-1028718.jpg);
+    }
+    20%{
+        background-image: url(/img/pastelesMainSection/pexels-anete-lusina-5722933.jpg);
+    }
+    40%{
+        background-image: url(/img/pastelesMainSection/pexels-cup-of-couple-8015272.jpg);
+    }
+    60%{
+        background-image: url(/img/pastelesMainSection/pexels-ella-olsson-1334132.jpg);
+    }
+    80%{
+        background-image: url(/img/pastelesMainSection/pexels-shvets-production-7525107.jpg)
+    }
+    100%{
+        background-image: url(/img/pastelesMainSection/pexels-shvets-production-7525224.jpg)
+    }
+}
+
+@media (max-width: 900px) {
+    #logo{
+        height: 15vh;
+        width: 15vh;
+        top: 1%;
+        left: 5%;
+    }
+    #menu{
+        display: none;
+    }
+    #seccionPrincipal > button{
+        width: 100%;
+    }
+    #seccionPrincipal > h1{
+        text-align: center;
+    }
+}

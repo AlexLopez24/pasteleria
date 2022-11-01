@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Pagina de parctica numero 3" />
+    <link
+      rel="shortcut icon"
+      href="/img/LogoPasteleriaRedes/LogoPasteleria.png"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <title>Bakery Shop</title>
+  </head>
+  <body>
+    <header>
+      <img
+        id="logo"
+        src="./img/LogoPasteleriaRedes/LogoPasteleria.png"
+        alt="logotipo pagina"
+      />
+      <nav>
+        <ul id="menu">
+          <li>
+            <button class="fontNav">Pedidos</button>
+          </li>
+          <li>
+            <a class="fontNav" href="#locacion">Encuentranos </a>
+          </li>
+          <li>
+            <a href="#" class="fontNav">Catalogo </a>
+          </li>
+          <li>
+            <img
+              id="carritoCompra"
+              class="fontNav"
+              src="./img/iconos/cesta.png"
+              alt="carrito de compras"
+              width="auto" height="auto"
+            />
+            <span id="contenedorCarritoDeCompras" class="hide">
+              <div id="contenedorArticulos"></div>
+              <p>Precio total: <span id="precioTotal">0</span></p>
+              <button id="continuarCompra">Continuar</button>
+            </span>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="seccionPrincipal">
+        <h1>Bakery Shop</h1>
+        <button><a href="#seleccionDeLaSemana">comienza a comprar</a></button>
+      </section>
+      <section id="seleccionDeLaSemana">
+        <h2>Seleccion de la semana</h2>
+        <article id="pastelesFrios" class="seccionPasteles">
+          <h3>Pasteles frios</h3>
+          <ul id="listaPastelesFrios"></ul>
+          <div id="contenedorCompras" class="hide"></div>
+          <h4><a href="#">Ver catalogo</a></h4>
+        </article>
+        <article id="pastelesNormales" class="seccionPasteles">
+          <h3>Pasteles Normales</h3>
+          <ul id="listaPastelesNormales"></ul>
+          <h4><a href="#">Ver catalogo</a></h4>
+        </article>
+      </section>
+      <section id="locacion">
+        <article id="mapa"></article>
+        <article id="contacto"></article>
+      </section>
+    </main>
+    <footer></footer>
+  </body>
+  <script src="/script.js"></script>
+</html>
