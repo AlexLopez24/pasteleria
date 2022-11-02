@@ -89,6 +89,28 @@ window.onload = function () {
             icono: '/img/LogoPasteleriaRedes/LogoPasteleria.png'
         }
     ];
+    const arrayAdornos = [
+        chispas ={
+            id: 'adornoChispas',
+            nombre: 'Chispas de colores',
+            url: '/img/adornos/chispas.jpg'
+        },
+        letrero = {
+            id: 'letPersonalizable',
+            nombre: 'Letrero personalizable',
+            url: '/img/adornos/cumple.jpg'
+        },
+        figuras = {
+            id: 'adornoFiguras',
+            nombre: 'Figuras 3D',
+            url: '/img/adornos/figuras.jpg'
+        },
+        galletas = {
+            id: 'adornoGalletas',
+            nombre: 'Galletas',
+            url: '/img/adornos/galletas.jpg'
+        }
+    ]
     //Definiendo listas de pasteles
     const pastelesFrios = document.querySelector('#listaPastelesFrios');
     const pastelesNormales = document.querySelector('#listaPastelesNormales');
@@ -101,9 +123,9 @@ window.onload = function () {
     const { nombre: nombreF, url: urlF, precio: precioF, id: idF, ingredientes: ingredienteF } = pastelFresa;
     const { nombre: nombreA, url: urlA, precio: precioA, id: idA, ingredientes: ingredienteA } = pastelAlmendra;
     const { nombre: nombreMora, url: urlMora, precio: precioMora, id: idMora, ingredientes: ingredienteMora } = pastelMora;
-    const {nombre : nombreTres, url: urlTres, precio: precioT, id: idT, ingredientes: ingredienteT} = pastelTresLeches;
-    const {nombre: nombreZ, url: urlZ, precio: precioZ, id: idZ, ingredientes: ingredienteZ} = pastelZanahoria;
-    const {nombre: nombreN, url: urlN, precio: precioN, id: idN, ingredientes: ingredienteN} = pastelNaranja;
+    const { nombre: nombreTres, url: urlTres, precio: precioT, id: idT, ingredientes: ingredienteT } = pastelTresLeches;
+    const { nombre: nombreZ, url: urlZ, precio: precioZ, id: idZ, ingredientes: ingredienteZ } = pastelZanahoria;
+    const { nombre: nombreN, url: urlN, precio: precioN, id: idN, ingredientes: ingredienteN } = pastelNaranja;
     // Agregando pastel a la seccion de la semana - linea 31
     agregarPastel(nombre, url, pastelesFrios, precio, id, ingredientes);  //Pastel de chocolate
     agregarPastel(nombreM, urlM, pastelesFrios, precioM, idM, ingredienteM); //Pastel de Mango
@@ -113,21 +135,14 @@ window.onload = function () {
     agregarPastel(nombreF, urlF, pastelesFrios, precioF, idF, ingredienteF); //Pastel de Fresa
     agregarPastel(nombreA, urlA, pastelesFrios, precioA, idA, ingredienteA); //Pastel de almendra
     agregarPastel(nombreMora, urlMora, pastelesNormales, precioMora, idMora, ingredienteMora); //Pastel de mora
-    agregarPastel(nombreTres, urlTres, pastelesFrios,precioT, idT, ingredienteT); // Pastel de tres leches
+    agregarPastel(nombreTres, urlTres, pastelesFrios, precioT, idT, ingredienteT); // Pastel de tres leches
     agregarPastel(nombreZ, urlZ, pastelesFrios, precioZ, idZ, ingredienteZ); // Pastel de zanahoria
-    agregarPastel(nombreN, urlN, pastelesFrios,precioN, idN, ingredienteN ); //Pastel de naranja
-
-    console.log(arrayPasteles);
-    for (let x = 0; x < arrayPasteles.length; x++) {
-        console.log(`Nombre Producto: ${arrayPasteles[x].nombre} - Precio: ${arrayPasteles[x].precio}`)
-    }
-
+    agregarPastel(nombreN, urlN, pastelesFrios, precioN, idN, ingredienteN); //Pastel de naranja
     const carrito = document.querySelector('#carritoCompra');
     const modalCarrito = document.querySelector('#contenedorCarritoDeCompras');
     const contenedorCarrito = document.querySelector('#contenedorArticulos');
     const contenedorConfirmacion = document.querySelector('#contenedorCompras');
-
-
+    
     modalCarrito.style.display = "none"
     //Agrega productos a la seleccion de la semana
     function agregarPastel(nombre, url, nombreLista, precio, id, ingrediente) {
@@ -140,20 +155,17 @@ window.onload = function () {
             <p>Precio: <span> ${precio} USD<p>
             <button id='${id}' class="botonCarrito">  <img class="iconoCompra" id="${nombre}" src="/img/iconos/anadir-al-carrito.png"  alt="imagen producto"></button>
         </div>
-
         `;
         nombreLista.appendChild(lista);
         // 
-
         const agregarItem = document.querySelector(`#${id}`); // Definimos nuestro boton de agregar a carrito
-        // 
-
         //Creamos la funcion para mostrar la confirmacion de elementos ++++++++
         agregarItem.addEventListener('click', () => {
             // Hacemos que al momento de darle click al carrito se le agregue un estilo al contenedor y se muestre en pantalla
             contenedorConfirmacion.style.display = "block";
             const confirmacion = document.createElement('div');
-            confirmacion.classList.add('contenedorProducto')
+            confirmacion.classList.add('contenedorProducto');
+
             confirmacion.innerHTML = `
             <div id="cabeceraConfirmacion"> 
                 <h3> Agregar al carrito </h3>
@@ -168,18 +180,34 @@ window.onload = function () {
                 </div>
                 <div id="extrasPastel">
                     <h3> Agregar extras </h3>
-                    <div> Hola </div>
+                    <div> 
+                    <p> Combinar con otro pastel</p>
+                    <select id="listaPasteles">
+                    <option> sin combinar </option>
+                    </select>
+                    <p> Agregar algun adorno al pastel </p>
+                    <ul id="listaAdornos">
+                    
+                    </ul>
+                    </div>
                 </div>
             </div>
             <div id="contenedorBoton">
             <button id="comprar"> Agregar al carrito </button>
             </div>
         `;
-
             contenedorConfirmacion.innerHTML = confirmacion.outerHTML;
-            console.log(id)
+            console.log(id);
+           //Recorrermos nuestro arrayPasteles para poder agregarlo a la etiqueta select en nuestros extras del pedido
+            for(let i in arrayPasteles)
+            { 
+                document.getElementById("listaPasteles").innerHTML += "<option value='"+arrayPasteles[i].nombre+"'>"+arrayPasteles[i].nombre+"</option>"; 
 
-            //Definimos nuestro boton que nos dara la opcion de agregar al carrito
+            }
+            for(let x in arrayAdornos)
+            {
+                document.getElementById('listaAdornos').innerHTML += "<li>" + `<img src="${arrayAdornos[x].url}" id="adornos">` + arrayAdornos[x].nombre +`<input type='checkbox' id='${arrayAdornos[x].id}' value='${arrayAdornos[x].id}_check'}>` + "</li>";
+            }
             const botonComprar = document.querySelector('#comprar');
             botonComprar.addEventListener('click', () => {
                 //Agregando producto al carrito 
@@ -193,7 +221,6 @@ window.onload = function () {
             })
         });
     }
-
     //Agrega productos al carrito
     function agregarProducto(nombre, icono, precio) {
         let articulo = document.createElement('div');
@@ -206,7 +233,6 @@ window.onload = function () {
         `;
         contenedorCarrito.appendChild(articulo);
     }
-
     //Esta funcion nos permite visualizar/esconder el carrito de compras
     carrito.addEventListener('click', () => {
         if (modalCarrito.style.display === "none") {
