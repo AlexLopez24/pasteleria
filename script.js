@@ -90,7 +90,7 @@ window.onload = function () {
         }
     ];
     const arrayAdornos = [
-        chispas ={
+        chispas = {
             id: 'adornoChispas',
             nombre: 'Chispas de colores',
             url: '/img/adornos/chispas.jpg'
@@ -142,7 +142,7 @@ window.onload = function () {
     const modalCarrito = document.querySelector('#contenedorCarritoDeCompras');
     const contenedorCarrito = document.querySelector('#contenedorArticulos');
     const contenedorConfirmacion = document.querySelector('#contenedorCompras');
-    
+
     modalCarrito.style.display = "none"
     //Agrega productos a la seleccion de la semana
     function agregarPastel(nombre, url, nombreLista, precio, id, ingrediente) {
@@ -165,7 +165,6 @@ window.onload = function () {
             contenedorConfirmacion.style.display = "block";
             const confirmacion = document.createElement('div');
             confirmacion.classList.add('contenedorProducto');
-
             confirmacion.innerHTML = `
             <div id="cabeceraConfirmacion"> 
                 <h3> Agregar al carrito </h3>
@@ -186,53 +185,64 @@ window.onload = function () {
                     <option> sin combinar </option>
                     </select>
                     <p> Agregar algun adorno al pastel </p>
-                    <ul id="listaAdornos">
-                    
+                    <ul id="listaAdornos"> 
                     </ul>
+                    <p>Numero de unidades</p>
+                    <div id="contador">
+                    <p><input type="number" id="prueba" /></p>
+                    </div>
                     </div>
                 </div>
             </div>
+
             <div id="contenedorBoton">
+            
             <button id="comprar"> Agregar al carrito </button>
             </div>
         `;
             contenedorConfirmacion.innerHTML = confirmacion.outerHTML;
             console.log(id);
-           //Recorrermos nuestro arrayPasteles para poder agregarlo a la etiqueta select en nuestros extras del pedido
-            for(let i in arrayPasteles)
-            { 
-                document.getElementById("listaPasteles").innerHTML += "<option value='"+arrayPasteles[i].nombre+"'>"+arrayPasteles[i].nombre+"</option>"; 
-
+            //Definimos nuestro input number para saber el numero de articulos
+            let txtPrueba = document.querySelector('#prueba');
+            //Recorrermos nuestro arrayPasteles para poder agregarlo a la etiqueta select en nuestros extras del pedido
+            for (let i in arrayPasteles) {
+                document.getElementById("listaPasteles").innerHTML += "<option value='" + arrayPasteles[i].nombre + "'>" + arrayPasteles[i].nombre + "</option>";
             }
-            for(let x in arrayAdornos)
-            {
-                document.getElementById('listaAdornos').innerHTML += "<li>" + `<img src="${arrayAdornos[x].url}" id="adornos">` + arrayAdornos[x].nombre +`<input type='checkbox' id='${arrayAdornos[x].id}' value='${arrayAdornos[x].id}_check'}>` + "</li>";
+            for (let x in arrayAdornos) {
+                document.getElementById('listaAdornos').innerHTML += "<li class='objetoAdorno'>" + `<img src="${arrayAdornos[x].url}" id="adornos">` + arrayAdornos[x].nombre + `<input type='checkbox' id='${arrayAdornos[x].id}' value='${arrayAdornos[x].id}_check'}>` + "</li>";
             }
+            const numeroTotalArticulos = Number(txtPrueba.value);
+        
             const botonComprar = document.querySelector('#comprar');
             botonComprar.addEventListener('click', () => {
                 //Agregando producto al carrito 
-                agregarProducto(nombre, icono, precio);
+                agregarProducto(nombre, icono, precio, txtPrueba.value);
                 contenedorConfirmacion.style.display = "none";
             })
+
             //Definimos nuestro boton para cerrar la ventana
             const cerrar = document.querySelector('#cerrarVentana');
             cerrar.addEventListener('click', () => {
                 contenedorConfirmacion.style.display = "none";
             })
+
+            //Agrega productos al carrito
+            function agregarProducto(nombre, icono, precio, numeroArticulos, combinacion = 'no combinacion', adorno = 'no adorno') {
+                let articulo = document.createElement('div');
+                //
+                const precioTotalArticulo = numeroArticulos * precio;
+                articulo.innerHTML = `
+                    <span class="articuloCarrito">
+                        <img class='iconoArticulo' src="${url}" alt="pasteles" width="auto" height="auto">
+                        <p>${numeroArticulos} * ${nombre} - ${precioTotalArticulo} usd  - Combinacion de pastel: ${combinacion} - Adornos: ${adorno}</p>
+
+                    </span>
+                 `;
+                contenedorCarrito.appendChild(articulo);
+            }
         });
     }
-    //Agrega productos al carrito
-    function agregarProducto(nombre, icono, precio) {
-        let articulo = document.createElement('div');
-        articulo.innerHTML = `
-        <span class="articuloCarrito">
-            <img class='iconoArticulo' src="${icono}" alt="pasteles" width="auto" height="auto">
-            <p>${nombre} - ${precio} usd</p>
-            <img class='iconoArticulo' src='/img/iconos/quitar-del-carrito.png'>
-        </span>
-        `;
-        contenedorCarrito.appendChild(articulo);
-    }
+
     //Esta funcion nos permite visualizar/esconder el carrito de compras
     carrito.addEventListener('click', () => {
         if (modalCarrito.style.display === "none") {

@@ -272,6 +272,8 @@ height: 100%;
 }
 .iconoArticulo{
     height: 5vh;
+    width: 6vh;
+    border-radius: 1vh;
 }
 #continuarCompra{
     border: none;
@@ -407,6 +409,7 @@ height: 100%;
 #listaAdornos{
     list-style: none;
     margin-top: 5%;
+    margin-bottom: 2%;
     display: flex;
     flex-direction: column;
     
@@ -417,9 +420,26 @@ height: 100%;
     margin-right: 2%;
 
 }
+.objetoAdorno{
+    display: flex;
+    align-items: center;
+    font-size: 3vh;
+    font-family: caviar;
+}
 input[type="checkbox"]{
     margin-left: 2vh;
 }
+#contador{
+    margin-top: 2%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#numPasteles{
+    padding: 2%;
+}
+
 @keyframes animacionCover{
     0%{
         background-image: url(/img/pastelesMainSection/pexels-acharaporn-kamornboonyarush-1028718.jpg);
@@ -457,4 +477,5 @@ input[type="checkbox"]{
     #seccionPrincipal > h1{
         text-align: center;
     }
+
 }
